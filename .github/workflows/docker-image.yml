@@ -32,4 +32,4 @@ jobs:
             sleep 5
           done
     - name: run tests
-      run: docker-compose exec -T web sh -c "pytest ."
+      run: docker-compose exec -T web sh -c "flake8 && pytest ."
