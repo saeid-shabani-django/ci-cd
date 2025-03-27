@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contactttt Form</title>
+</head>
+<body>
+    <h2>Contact Us</h2>
+    <form action="" method="post"> <!-- Replace # with your form processing URL -->
+        {{form.as_p}}
+        {% csrf_token %}
+        <input type="submit" value="Send Message">
+        {% comment %} <label for="content">content:</label><br>
+        <input type="text" id="content" name="content" required><br><br>
+
+        <label for="title">title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="status">status:</label><br>
+        <input type="text" id="status" name="status" required><br><br>
+
+        <input type="submit" value="Send Message"> {% endcomment %}
+    </form>
+</body>
+</html>

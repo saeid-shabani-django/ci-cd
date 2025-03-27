@@ -1,0 +1,25 @@
+
+<p>------------------------- welcome: {{user.email}}----------------------------------</p>
+{% for post in all_posts %}
+title :<a href="{% url 'post_detail' post.id %}">{{post.title}}</a> <br>
+description : {{post.content}}<br>
+pk: {{post.pk}} <br>
+author email : {{post.author}}
+<p>---------------------------------------------------------------------</p>
+{% endfor %}
+
+
+{% comment %} {% if page_obj.has_previous %}
+<a href='?page={{page_obj.previous_page_number}}'>previous </a>
+{% endif %}
+{{page_obj.number}} 
+{% if page_obj.has_next %}
+<a href='?page={{page_obj.next_page_number}}'>next </a>
+{% endif %} {% endcomment %}
+
+<h2>sorting</h2>
+<a href='?sort=title'>sort ascending </a><br>
+<a href='?sort=-title'>sort descending </a><br>
+<a href='?sort=created_at'>sort based on date </a>
+
+

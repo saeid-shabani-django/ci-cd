@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - smtp4dev
+    
+    environment:
+      - "SECRET_KEY=${SECRET_KEY}"
+  smtp4dev:
+    image: rnwood/smtp4dev
+    ports:
+      - "25:25"             # SMTP port (use "2525:25" if port 25 is busy)
+      - "5000:80"           # Web interface port (http://localhost:5000)
+    environment:
+      - RelayOptions:None 
