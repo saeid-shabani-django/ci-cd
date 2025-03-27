@@ -22,6 +22,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y docker-compose
     - name: run server
-      run: docker-compose up -d
+      run: |
+        docker-compose up -d
+        docker-compose ps 
+    - name: Wait for web container to be ready
+      run: |
+          while ! docker-compose ps | grep -q 'web.*Up'; do
+            echo "Waiting for web container to be ready..."
+            sleep 5
+          done
     - name: run tests
-      run: docker exec web sh -c "pytest ."
+      run: docker exec -T web sh -c "pytest ."
