@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: run server
-      run: docker up -d
+      run: docker-compose up -d
     - name: run tests
       run: docker-compose exec web sh -c "pytest ."
